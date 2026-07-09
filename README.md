@@ -38,3 +38,28 @@ Two CSV files are required:
 Install dependencies:
 ```bash
 pip install -r requirements.txt
+
+
+4. How to run
+Bash
+
+python ablation_balanced500.py
+By default, input CSVs are read from the path defined in CFG.data_dir, and all outputs are written to Paper_Results_Models_Balanced500/. Edit CFG.data_dir / CFG.out_dir in the script to match your local paths.
+
+5. Reproducibility settings
+Bootstrap repetitions: 30
+Training subsampling ratio: 0.9
+Validation bootstrap: stratified by class (keeps 1:1 balance)
+Base random seed: 42 (per-repetition seed = 42 + i)
+Software versions are printed at runtime (see console output).
+6. Google Earth Engine workflow
+A step-by-step description of the Sentinel-1/2 preprocessing and feature extraction workflow (data collections, filtering, masking, compositing, smoothing, feature extraction, and export settings) is provided in the Supplementary Materials of the paper.
+
+7. Outputs
+Running the script generates (in the output folder):
+
+Table1_Feature_XGB.csv, Table2_Feature_RF.csv, Table3_Model_Comparison.csv
+Paired_ttests_OpticalOnly_vs_OpticalPlusSVI.csv
+All_bootstrap_results.csv
+Fig1_Ablation_and_Models_v3.png/pdf
+Fig2_Confusion_Matrix_v3.png/pdf
